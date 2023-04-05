@@ -1,7 +1,9 @@
 package br.com.alura.estudo.controle;
 
+import java.util.List;
+
 public class Controle {
-	//private List<String> lista = List.of("I1", "It2", "Ite3", "Item4");
+	private List<String> lista;
 
 	public Controle() {
 	}
@@ -12,8 +14,10 @@ public class Controle {
 	private Controle(String str, String str2) {
 	}
 
-//	public List<String> getList() {
-//		return lista;
-//	}
+	private void metodoControle1() {}
+	
+	public List<String> getList() {
+		return lista;
+	}
 
 }
