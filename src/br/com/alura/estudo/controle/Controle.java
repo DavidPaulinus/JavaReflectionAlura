@@ -1,7 +1,5 @@
 package br.com.alura.estudo.controle;
 
-import java.util.List;
-
 public class Controle {
 	//private List<String> lista = List.of("I1", "It2", "Ite3", "Item4");
 
