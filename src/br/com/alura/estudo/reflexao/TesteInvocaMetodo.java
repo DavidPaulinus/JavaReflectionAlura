@@ -1,6 +1,5 @@
 package br.com.alura.estudo.reflexao;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -27,12 +26,13 @@ public class TesteInvocaMetodo {
 //		
 //		Object retorno = method.invoke(obj);
 //		System.out.println(retorno);
+
 		Class<?> controleClass = Class.forName("br.com.alura.estudo.controle.Controle");
 		Object controle = controleClass.getDeclaredConstructor().newInstance();
-		
+
 		Method m = controleClass.getDeclaredMethod("metodoControle2", String.class, Integer.class);
 		Object retorno = m.invoke(controle, "AAA", 1);
-		
+
 		System.out.println(retorno);
 	}
 }

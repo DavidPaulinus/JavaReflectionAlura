@@ -1,6 +1,8 @@
 package br.com.alura.estudo.service;
 
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.stream.Stream;
 
 public class ManipuladorObjeto {
 
@@ -10,15 +12,20 @@ public class ManipuladorObjeto {
 		this.instancia = instancia;
 	}
 
-	public ManipuladorMetodo getMetodo(String nomeMetodo){
-		try {
-			Method metodo = instancia.getClass().getDeclaredMethod(nomeMetodo);
-			return new ManipuladorMetodo(metodo, instancia);
-			
-		} catch (NoSuchMethodException | SecurityException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
+	public ManipuladorMetodo getMetodo(String nomeMetodo, Map<String, Object> params){
+		Method metodoSelecionado = Stream.of(instancia.getClass().getDeclaredMethods())
+									.filter(x -> x.getName().equals(nomeMetodo) 
+												&& x.getParameterCount() == params.values().size()
+												&& Stream.of(x.getParameters())
+																.allMatch(y -> 
+																			params.keySet().contains(y.getName())
+																			&& params.get(y.getName()).getClass().equals(y.getType())
+																)
+									)
+									.findFirst()
+									.orElseThrow(() -> new RuntimeException("Método não encontrado"));
+		
+		return new ManipuladorMetodo(metodoSelecionado, instancia, params);
 	}
 
 }
