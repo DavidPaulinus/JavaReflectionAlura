@@ -1,6 +1,6 @@
 package br.com.alura.estudo.model;
 
-public class Produto {
+public class Produto extends SuperProduto{
 	private String nome;
 	private double valor;
 	private String marca;
