@@ -4,6 +4,7 @@ import java.util.Map;
 
 import br.com.alura.estudo.alurator.protocolo.Request;
 import br.com.alura.estudo.reflexao.Reflexao;
+import br.com.alura.estudo.service.ConversorXML;
 
 public class Alurator {
 	private String pacotebase;
@@ -28,6 +29,8 @@ public class Alurator {
 //		obj.metodo();
 		
 		System.out.println(retorno);
+		
+		retorno = new ConversorXML().convert(retorno);
 
 		return retorno;
 

@@ -10,6 +10,7 @@ public class TesteManipulaAtributos {
 		Class<?> classe = prod.getClass();
 		
 		System.out.println(classe.getField("id").getName() + ": " + classe.getField("id").get(prod));
+		
 		for (Field atrib : classe.getDeclaredFields()) {
 			atrib.setAccessible(true);
 			System.out.println(atrib.getName() + ": " + atrib.get(prod));
