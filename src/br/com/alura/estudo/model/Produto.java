@@ -1,8 +1,14 @@
 package br.com.alura.estudo.model;
 
+import br.com.alura.estudo.annotation.NomeTagXML;
+
+@NomeTagXML("product")
 public class Produto extends SuperProduto{
+	@NomeTagXML("name")
 	private String nome;
+	@NomeTagXML("value")
 	private double valor;
+	@NomeTagXML("brand")
 	private String marca;
 
 	public Produto(String nome, double valor, String marca) {
